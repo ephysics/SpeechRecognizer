@@ -79,7 +79,10 @@ class GoogleSpeechAPI(object):
 
     def start(self):
         # remove previous file
-        os.remove(self.record_filename)
+        try:
+            os.remove(self.record_filename)
+        except:
+            pass
 
         # start rec process and wait for file becomes not empty
         self.log.debug("Starting external rec process (%s)" % self.record_command)
